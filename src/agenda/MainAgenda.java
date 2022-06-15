@@ -161,6 +161,11 @@ public class MainAgenda {
     int posicao = scanner.nextInt();
 
     Contato contato = agenda.getContato(posicao);
+    if(contato == null) {
+        System.out.println("POSIÇÃO INVÁLIDA!");
+        return;
+    }
+
     if (contato.getFavorito()) {
       System.out.println("Dados do contato:\n<3 " + contato.toString());
     } else {

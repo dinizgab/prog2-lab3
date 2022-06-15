@@ -48,15 +48,18 @@ public class Contato {
   }
 
   public String[] getTags() {
-    return this.tags.clone();
+    return this.tags;
+  }
+
+  public void adicionaTags(int posicaoTag, String tag) {
+    this.tags[posicaoTag] = tag;
   }
 
   private String formataTags() {
     String tagsFormatadas = "";
     for (String tag : tags) {
-      
       if (tag != null) {
-        tagsFormatadas += tag;
+        tagsFormatadas += tag + " ";
       }
     }
     return tagsFormatadas;

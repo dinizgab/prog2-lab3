@@ -39,18 +39,14 @@ public class Agenda {
   }
 
   public void cadastraFavorito(int posicaoContato, int posicaoFavorito) {
-    Contato contatoFavoritado = this.contatos[posicaoContato];
-    Contato contatoFavorito = this.favoritos[posicaoFavorito];
 
-    if(contatoFavorito != null) {
-      contatoFavoritado.setFavorito();
-      contatoFavorito.setFavorito();
+    if(this.favoritos[posicaoFavorito] != null) {
+      this.contatos[posicaoContato].setFavorito();
+      this.favoritos[posicaoFavorito].setFavorito();
     } else {
-      contatoFavoritado.setFavorito();
+      this.contatos[posicaoContato].setFavorito();
     }
-    
-    // TODO - Achar uma maneira de isso parar de retornar ao valor null dentro do array de favoritos
-    contatoFavorito = contatoFavoritado;  
+    this.favoritos[posicaoFavorito] = this.contatos[posicaoContato];
   }
 
   public boolean validaFavorito(int posicaoContato) {
@@ -89,11 +85,8 @@ public class Agenda {
   public void cadastraTag(String[] contatosDeCadastro, String tag, int posicaoTag) {
     for (String contato : contatosDeCadastro) {
       int indexContato = Integer.parseInt(contato);
-      
-      // TODO - Acontecendo o mesmo erro dos favoritos
-      
-      String[] tags = this.contatos[indexContato].getTags();
-      tags[posicaoTag] = tag;
+
+      this.contatos[indexContato].adicionaTags(posicaoTag, tag);;
     }
   }
 }
